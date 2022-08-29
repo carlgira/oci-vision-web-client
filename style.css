@@ -1,0 +1,78 @@
+.buttons {
+	width: 100%;
+	justify-content: center;
+	  align-items: center;
+	  display:flex;
+		
+	  }
+  
+	#speech-button{
+	  display: inline;
+	}
+  
+	#overlay {
+	  display: inline;
+	}
+  
+	/* Show the DOM Overlay element while active (:xr-overlay pseudoclass) */
+	#overlay:xr-overlay {
+	  display: initial;
+	}
+  
+	#greeting {
+	  background-color: rgba(1, 1, 1, 0.25);
+	  margin: 10px;
+	}
+  
+	#dom-overlay-message {
+	  position: absolute;
+	  left: 0;
+	  bottom: 0;
+	  right: 0;
+	  padding: 1em;
+	  background: #33333355;
+	  border-top: 5px solid #ffffff55;
+	  color: white;
+	}
+  
+	.a-dom-overlay button {
+	  padding: 1em;
+	  appearance: none;
+	  background: #00000055;
+	  border: 3px solid white;
+	  border-radius: 1em;
+	  margin: 1em 1em 0 0;
+	  color: white;
+	}
+  
+	.contentarea {
+	  font-size: 16px;
+	  font-family: "Lucida Grande", "Arial", sans-serif;
+	  width: 760px;
+	}
+  
+	#startbutton {
+	  position: absolute;
+	  
+	  z-index: 10;
+	  display:block;
+	
+	margin-left:auto;
+	margin-right:auto;
+	top:10px;
+	align-self: center;
+	background-color: rgba(0, 150, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.7);
+	box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+	font-size: 14px;
+	font-family: "Lucida Grande", "Arial", sans-serif;
+	color: rgba(255, 255, 255, 1.0);
+  }
+  
+  .oda-chat-wrapper:not(.oda-chat-footer) {
+	visibility: hidden;
+  }
+  
+  .oda-chat-footer{
+	visibility: visible;
+  }
