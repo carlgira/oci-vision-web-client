@@ -8,7 +8,7 @@ async function loadVariables() {
     console.log(variables);
     labels = variables['labels'];
     modelId = variables['modelId'];
-    visionServiceEndpoint = variables['visionServiceEndpoint'];
+    visionServiceEndpoint = "https://" + variables['endpoint'] + "/" + variables['path'];
 }
 
 function captureVideoFrame(video, format, width, height) {

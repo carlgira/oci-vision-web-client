@@ -1,5 +1,6 @@
 {
     "labels": ##labels##,
     "modelId": "##modelId##",
-    "visionServiceEndpoint": "##visionServiceEndpoint##"
+    "endpoint": "##endpoint##",
+    "path": "##path##"
 }
