@@ -4,11 +4,15 @@ var visionServiceEndpoint = '';
 
 async function loadVariables() {
     const response = await fetch("js/variables.json");
-    const variables = await response.json();
-    console.log(variables);
-    labels = variables['labels'];
+    const variables = await response.json();    
     modelId = variables['modelId'];
     visionServiceEndpoint = "https://" + variables['endpoint'] + "/" + variables['path'];
+
+    variables['labels'].split(",").forEach(label => {
+        label.split(":").forEach(values => {
+            labels[values[0]] = values[1];
+        });
+    });
 }
 
 function captureVideoFrame(video, format, width, height) {

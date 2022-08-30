@@ -1,5 +1,5 @@
 {
-    "labels": ##labels##,
+    "labels": "##labels##",
     "modelId": "##modelId##",
     "endpoint": "##endpoint##",
     "path": "##path##"
