@@ -9,9 +9,8 @@ async function loadVariables() {
     visionServiceEndpoint = "https://" + variables['endpoint'] + "/" + variables['path'];
 
     variables['labels'].split(",").forEach(label => {
-        label.split(":").forEach(values => {
-            labels[values[0]] = values[1];
-        });
+        var values = label.split(":");
+        labels[values[0]] = values[1];
     });
 }
 
