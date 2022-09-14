@@ -25,7 +25,7 @@
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	right: 20%;
+	right: 30%;
 	padding: 1em;
 	background: #33333355;
 	border-top: 5px solid #ffffff55;
@@ -34,9 +34,9 @@
 
 #dom-overlay-description {
 	position: absolute;
-	top: 70%;
-	left: 80%;
-	width: 18%;
+	top: 10%;
+	left: 70%;
+	width: 28%;
 	height: 100%;
 	padding: 1em;
 	background: #33333355;
