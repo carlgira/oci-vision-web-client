@@ -53,7 +53,11 @@ function analizeImage(callback){
         if (this.readyState == 4 && this.status == 200) {
             var r = JSON.parse(this.responseText);
 
-            if(r.hasOwnProperty('image_objects') && r.image_objects !== null){
+            if(r.hasOwnProperty('labels') && r.labels !== null) {
+              var detection = r["labels"][0];
+             callback(labels[detection.name] || detection.name, detection.confidence);
+            }
+            else if(r.hasOwnProperty('image_objects') && r.image_objects !== null){
               var groups = group_boundind_box(r);
       
               groups.forEach(element => {
@@ -93,10 +97,7 @@ function analizeImage(callback){
               });
       
             }
-            else if(r.hasOwnProperty('labels') && r.labels !== null) {
-              var detection = r["labels"][0];
-             callback(labels[detection.name] || detection.name, detection.confidence);
-            }
+            
         }
     };
     
