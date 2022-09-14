@@ -13,6 +13,13 @@
     message.textContent = label + " " + (Math.round(confidence * 100) / 100).toFixed(2);
   }
 
+  AFRAME.registerComponent('wireframe', {
+    dependencies: ['material'],
+    init: function () {
+      this.el.components.material.material.wireframe = true;
+    }
+  });
+
   AFRAME.registerComponent("markerhandler", {
     init: function() {
       this.el.sceneEl.addEventListener("markerFound", function() {
@@ -44,12 +51,23 @@
       <a-entity gltf-model="#wedo-logo" position="0 0 0" rotation="0 0 0" markerhandler/>
     </a-marker>
 
+    <!-- 11 x 5 => 0.2 -->
+    <a-plane width = "0.01" height = "0.01" depth = "0" position = "0 0 -2.0" color = "#FF8800" wireframe></a-plane>
+    
+    <a-plane width = "0.01" height = "0.01" depth = "0" position = "1.0 -0.45 -2.0" color = "#FF8800" wireframe></a-plane>
+    <a-plane width = "0.01" height = "0.01" depth = "0" position = "-1.0 -0.45 -2.0" color = "#FF8800" wireframe></a-plane>
+    <a-plane width = "0.01" height = "0.01" depth = "0" position = "1.0 0.45 -2.0" color = "#FF8800" wireframe></a-plane>
+    <a-plane width = "0.01" height = "0.01" depth = "0" position = "-1.0 0.45 -2.0" color = "#FF8800" wireframe></a-plane>
+    
+    
+	</a-plane>
+
     <a-entity camera></a-entity>
 
   </a-scene>
 
   <div class="buttons">
-    <button id="startbutton" class="say-hi-button" onclick="analizeImage(analizeImageCallback)">Analize</button>
+    <button id="startbutton" onclick="analizeImage(analizeImageCallback)">Analize</button>
   </div>
 
 </body>

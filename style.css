@@ -68,11 +68,3 @@
 	font-family: "Lucida Grande", "Arial", sans-serif;
 	color: rgba(255, 255, 255, 1.0);
   }
-  
-  .oda-chat-wrapper:not(.oda-chat-footer) {
-	visibility: hidden;
-  }
-  
-  .oda-chat-footer{
-	visibility: visible;
-  }
