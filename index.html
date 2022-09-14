@@ -12,7 +12,7 @@
     const message = document.getElementById("dom-overlay-message");
     message.textContent = label + " " + (Math.round(confidence * 100) / 100).toFixed(2);
     const description = document.getElementById("dom-overlay-description");
-    message.description = description;
+    description.textContent = description;
   }
 </script>
 <link rel="stylesheet" href="style.css">
