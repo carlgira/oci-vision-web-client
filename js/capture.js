@@ -55,7 +55,7 @@ function analizeImage(callback){
 
             if(r.hasOwnProperty('labels') && r.labels !== null) {
               var detection = r["labels"][0];
-             callback(labels[detection.name] || detection.name, detection.confidence);
+             callback(labels[detection.name] || detection.name, detection.confidence, r.details.description || '');
             }
             else if(r.hasOwnProperty('image_objects') && r.image_objects !== null){
               var groups = group_boundind_box(r);
@@ -74,10 +74,7 @@ function analizeImage(callback){
                   var yNew = ycenter * (heightUnity * 2) / frame.height - heightUnity;
                   var widthNew = cWidth * (widthUnity * 2) / frame.width;
                   var heighNew = cHeigh * (heightUnity * 2) / frame.height;
-      
-                  console.log(xNew + ' ' + yNew + ' ' + widthNew + ' '  + heighNew);
-      
-      
+            
                   var sceneEl = document.querySelector('a-scene');
                   var entityEl = document.createElement('a-plane');
                   
@@ -95,7 +92,7 @@ function analizeImage(callback){
                   entityText.setAttribute('position', {x: xNew, y: yNew, z: -2.0});
                   sceneEl.appendChild(entityText);
               });
-      
+              callback(groups.values[0].name || detection.name, detection.confidence, r.details.description || '');
             }
             
         }
@@ -118,7 +115,6 @@ function group_boundind_box(res)
   var groups = []
 
   res.image_objects.forEach(image_object => {
-    console.log(image_object);
     var flag = false;
     for (let index = 0; index < groups.length; index++) {
       const g = groups[index];
