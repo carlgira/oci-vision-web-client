@@ -1,4 +1,3 @@
-var labels = {};
 var modelId = '';
 var visionServiceEndpoint = '';
 var widthUnity = 1;
@@ -10,11 +9,6 @@ async function loadVariables() {
     const variables = await response.json();    
     modelId = variables['modelId'];
     visionServiceEndpoint = "https://" + variables['endpoint'] + "/" + variables['path'];
-
-    variables['labels'].split(",").forEach(label => {
-        var values = label.split(":");
-        labels[values[0]] = values[1];
-    });
 }
 
 function captureVideoFrame(video, format, width, height) {
@@ -55,7 +49,7 @@ function analizeImage(callback){
 
             if(r.hasOwnProperty('labels') && r.labels !== null) {
               var detection = r["labels"][0];
-             callback(labels[detection.name] || detection.name, detection.confidence, r.details.description || '');
+             callback(r.details.name || detection.name, detection.confidence, r.details.description || '');
             }
             else if(r.hasOwnProperty('image_objects') && r.image_objects !== null){
               var groups = group_boundind_box(r);
@@ -92,7 +86,7 @@ function analizeImage(callback){
                   entityText.setAttribute('position', {x: xNew, y: yNew, z: -2.0});
                   sceneEl.appendChild(entityText);
               });
-              callback(groups.values[0].name || detection.name, detection.confidence, r.details.description || '');
+              callback(r.details.name || detection.name, detection.confidence, r.details.description || '');
             }
             
         }
@@ -102,8 +96,6 @@ function analizeImage(callback){
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({"image" : frame.dataUri.substr(23), "model_id" : modelId }));
     
-
-      
 }
 
 function intersects(rect1, rect2){
