@@ -8,24 +8,12 @@
 
 <script src="js/capture.js"></script>
 <script>
-  function analizeImageCallback(label, confidence) {
+  function analizeImageCallback(label, confidence, description) {
     const message = document.getElementById("dom-overlay-message");
     message.textContent = label + " " + (Math.round(confidence * 100) / 100).toFixed(2);
+    const description = document.getElementById("dom-overlay-description");
+    message.description = description;
   }
-
-  AFRAME.registerComponent('wireframe', {
-    dependencies: ['material'],
-    init: function () {
-      this.el.components.material.material.wireframe = true;
-    }
-  });
-
-  AFRAME.registerComponent("markerhandler", {
-    init: function() {
-      this.el.sceneEl.addEventListener("markerFound", function() {
-      }) 
-    }
-  })
 </script>
 <link rel="stylesheet" href="style.css">
 
@@ -34,7 +22,6 @@
   <div id="dom-overlay">
     <div id="dom-overlay-message"></div>
     <div id="dom-overlay-description">
-      Something
     </div>
   </div>
 
@@ -51,19 +38,8 @@
     </a-marker>
 
     <a-marker preset='kanji'>
-      <a-entity gltf-model="#wedo-logo" position="0 0 0" rotation="0 0 0" markerhandler/>
+      <a-entity gltf-model="#wedo-logo" position="0 0 0" rotation="0 0 0"/>
     </a-marker>
-
-    <!-- 11 x 5 => 0.2 -->
-    <a-plane width = "0.01" height = "0.01" depth = "0" position = "0 0 -2.0" color = "#FF8800" wireframe></a-plane>
-    
-    <a-plane width = "0.01" height = "0.01" depth = "0" position = "1.0 -0.45 -2.0" color = "#FF8800" wireframe></a-plane>
-    <a-plane width = "0.01" height = "0.01" depth = "0" position = "-1.0 -0.45 -2.0" color = "#FF8800" wireframe></a-plane>
-    <a-plane width = "0.01" height = "0.01" depth = "0" position = "1.0 0.45 -2.0" color = "#FF8800" wireframe></a-plane>
-    <a-plane width = "0.01" height = "0.01" depth = "0" position = "-1.0 0.45 -2.0" color = "#FF8800" wireframe></a-plane>
-    
-    
-	</a-plane>
 
     <a-entity camera></a-entity>
 
