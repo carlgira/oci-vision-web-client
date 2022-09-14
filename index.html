@@ -11,8 +11,8 @@
   function analizeImageCallback(label, confidence, description) {
     const message = document.getElementById("dom-overlay-message");
     message.textContent = label + " " + (Math.round(confidence * 100) / 100).toFixed(2);
-    const description = document.getElementById("dom-overlay-description");
-    description.textContent = description;
+    const desc = document.getElementById("dom-overlay-description");
+    desc.textContent = description;
   }
 </script>
 <link rel="stylesheet" href="style.css">
