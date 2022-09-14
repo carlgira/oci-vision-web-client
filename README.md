@@ -3,13 +3,11 @@
 ## Configuration
 Change the file js/variables.json with your env variables.
 
-- **##labels##**: A JSON to show user friendly labels of the classes of the model.
-```
-{"pyramid_giza" : "Pyramid of Giza", "sydney_opera" : "Sydney Opera house"}
-```
-- **##modelId##**: Model OCID of the custom model. 
+- **##modelId##**: Model OCID of the custom model. (optional, it can be empty)
 
-- **##visionServiceEndpoint##**: Endpoint of the python function to call vision service.
+- **##endpoint##**: Endpoint of the python function to call vision service.
+
+- **##path##**: Path of the proxy service to call vision model.
 
 ## Testing
 For testing you only need a web-server. You can install the "Chrome web server" addon.
