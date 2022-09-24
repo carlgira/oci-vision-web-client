@@ -1,15 +1,9 @@
 var modelId = '';
+var models = [];
 var visionServiceEndpoint = '';
 var widthUnity = 1;
 var heightUnity = 0.45;
 var pixel = 0.001;
-
-async function loadVariables() {
-    const response = await fetch("js/variables.json");
-    const variables = await response.json();    
-    modelId = variables['modelId'];
-    visionServiceEndpoint = "https://" + variables['endpoint'] + "/" + variables['path'];
-}
 
 function captureVideoFrame(video, format, width, height) {
     if (typeof video === 'string') {
@@ -86,7 +80,7 @@ function analizeImage(callback){
                   entityText.setAttribute('position', {x: xNew, y: yNew, z: -2.0});
                   sceneEl.appendChild(entityText);
               });
-              callback(r.details.name || detection.name, detection.confidence, r.details.description || '');
+              callback(r.details.name || detection.name, detection.confidence, r.details.description | '', r.details.htmlContent | '');
             }
             
         }
@@ -135,5 +129,3 @@ function group_boundind_box(res)
 function two_decimal(num){
   return (Math.round(num * 100) / 100).toFixed(2);
 }
-
-loadVariables();

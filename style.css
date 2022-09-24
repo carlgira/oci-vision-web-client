@@ -43,7 +43,20 @@
 	border-top: 5px solid #ffffff55;
 	color: white;
 }
-	
+
+#dom-overlay-models {
+	position: absolute;
+	bottom: 5px;
+	right: 50%;
+	z-index: 1;
+}
+
+select {
+    border: 1px solid #000;
+    background-color: transparent;
+	color: white;
+}
+
 #startbutton {
 	position: absolute;
 	z-index: 10;

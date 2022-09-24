@@ -7,21 +7,62 @@
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
 <script src="js/capture.js"></script>
+
 <script>
-  function analizeImageCallback(label, confidence, description) {
+  function analizeImageCallback(label, confidence, description, htmlContent) {
     const message = document.getElementById("dom-overlay-message");
     message.textContent = label + " " + (Math.round(confidence * 100) / 100).toFixed(2);
     const desc = document.getElementById("dom-overlay-description");
-    desc.textContent = description;
+    if(description.length > 0){
+      desc.textContent = description;
+    }
+    else if(htmlContent.length > 0){
+      desc.innerHTML = htmlContent;
+    }
+    
+  }
+
+  function loadModels(){
+    console.log("models H" + models);
+    if(models.length > 0){
+      var divObj = document.getElementById('dom-overlay-models');
+      var selectObj = document.createElement('select');
+      var opt = null;
+      selectObj.addEventListener('change',function() {modelId = this.value;}, false);
+
+    for(i = 0; i<models.length; i++) { 
+        opt = document.createElement('option');
+        opt.value = models[i].id;
+        opt.innerHTML = models[i].name;
+        selectObj.appendChild(opt);
+      }
+      divObj.appendChild(selectObj);
+    }
+  }
+
+  async function init(){
+    const response = await fetch("js/variables.json");
+    const variables = await response.json();    
+    modelId = variables['modelId'];
+    if(variables.hasOwnProperty('models')){
+      models = variables['models'];
+      modelId = models[0].id;
+    }
+    visionServiceEndpoint = "https://" + variables['endpoint'] + "/" + variables['path'];
+
+    loadModels();
   }
 </script>
 <link rel="stylesheet" href="style.css">
 
-<body style="margin: 0px; overflow: hidden;">
+<body style="margin: 0px; overflow: hidden;" onload="init()">
   
   <div id="dom-overlay">
     <div id="dom-overlay-message"></div>
     <p id="dom-overlay-description"></p>
+
+    <div id="dom-overlay-models">
+    </div>
   </div>
 
   <a-scene embedded arjs="debugUIEnabled: false;">
