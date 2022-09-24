@@ -43,7 +43,7 @@ function analizeImage(callback){
 
             if(r.hasOwnProperty('labels') && r.labels !== null) {
               var detection = r["labels"][0];
-             callback(r.details.name || detection.name, detection.confidence, r.details.description || '');
+             callback(r.details.name || detection.name, detection.confidence, r.details.description || '', r.details.htmlContent | '');
             }
             else if(r.hasOwnProperty('image_objects') && r.image_objects !== null){
               var groups = group_boundind_box(r);
