@@ -89,7 +89,7 @@ function analizeImage(callback){
     
     xhttp.open("POST", visionServiceEndpoint, true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(JSON.stringify({"image" : frame.dataUri.substr(23), "model_id" : modelId }));
+    xhttp.send(JSON.stringify({"image" : frame.dataUri.substr(23), "model_type" : modelType , "model_id" : modelId }));
     
 }
 
