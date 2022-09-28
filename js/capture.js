@@ -47,6 +47,9 @@ function analizeImage(callback){
              callback(r.details.name || detection.name, detection.confidence, r.details.description || '', r.details.htmlContent || '');
             }
             else if(r.hasOwnProperty('image_objects') && r.image_objects !== null){
+              var detection = r["image_objects"][0];
+             callback(r.details.name || detection.name, detection.confidence, r.details.description || '', r.details.htmlContent || '');
+              /*
               var groups = group_boundind_box(r);
       
               groups.forEach(element => {
@@ -81,7 +84,7 @@ function analizeImage(callback){
                   entityText.setAttribute('position', {x: xNew, y: yNew, z: -2.0});
                   sceneEl.appendChild(entityText);
               });
-              callback(r.details.name || detection.name, detection.confidence, r.details.description || '', r.details.htmlContent || '');
+              callback(r.details.name || detection.name, detection.confidence, r.details.description || '', r.details.htmlContent || '');*/
             }
             
         }
