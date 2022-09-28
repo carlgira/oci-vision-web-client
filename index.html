@@ -23,12 +23,19 @@
   }
 
   function loadModels(){
-    console.log("models H" + models);
     if(models.length > 0){
       var divObj = document.getElementById('dom-overlay-models');
       var selectObj = document.createElement('select');
       var opt = null;
-      selectObj.addEventListener('change',function() {modelId = this.value;}, false);
+      selectObj.addEventListener('change',function() {
+        modelId = this.value;
+        for(i = 0; i<models.length; i++) { 
+          if(models[i].id === modelId){
+            modelType = models[i].type;
+            break;
+          }
+        }
+      }, false);
 
     for(i = 0; i<models.length; i++) { 
         opt = document.createElement('option');
@@ -47,6 +54,7 @@
     if(variables.hasOwnProperty('models')){
       models = variables['models'];
       modelId = models[0].id;
+      modelType = models[0].type;
     }
     visionServiceEndpoint = "https://" + variables['endpoint'] + "/" + variables['path'];
 

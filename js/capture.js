@@ -1,4 +1,5 @@
 var modelId = '';
+var modelType = 'image-classification';
 var models = [];
 var visionServiceEndpoint = '';
 var widthUnity = 1;
