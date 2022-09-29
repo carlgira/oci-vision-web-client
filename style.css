@@ -72,3 +72,7 @@ select {
 	font-family: "Lucida Grande", "Arial", sans-serif;
 	color: rgba(255, 255, 255, 1.0);
 }
+
+#startbutton:active {
+	background:olive;
+}
