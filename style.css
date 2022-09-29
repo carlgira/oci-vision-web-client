@@ -47,7 +47,7 @@
 #dom-overlay-models {
 	position: absolute;
 	bottom: 5px;
-	right: 50%;
+	right: 30%;
 	z-index: 1;
 }
 
