@@ -13,13 +13,8 @@
     const message = document.getElementById("dom-overlay-message");
     message.textContent = label + " " + (Math.round(confidence * 100) / 100).toFixed(2);
     const desc = document.getElementById("dom-overlay-description");
-    if(description.length > 0){
-      desc.textContent = description;
-    }
-    else if(htmlContent.length > 0){
-      desc.innerHTML = htmlContent;
-    }
-    
+    desc.textContent = description;
+    desc.innerHTML = htmlContent;
   }
 
   function loadModels(){
