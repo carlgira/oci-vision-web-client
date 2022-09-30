@@ -14,7 +14,9 @@
     message.textContent = label + " " + (Math.round(confidence * 100) / 100).toFixed(2);
     const desc = document.getElementById("dom-overlay-description");
     desc.textContent = description;
-    desc.innerHTML = htmlContent;
+    if(description.length === 0){
+       desc.innerHTML = htmlContent;
+    }
   }
 
   function loadModels(){
